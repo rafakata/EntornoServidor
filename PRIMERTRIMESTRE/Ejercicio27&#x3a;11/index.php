@@ -7,9 +7,23 @@ $tareas[] = new Tarea("Estudiar DWES", "Alta");
 $tareas[] = new Tarea("Ver serie", "Baja");
 
 
-if (isset($_POST['descripcion'])&& isset($_POST['prioridad'])){
-    $tareaNueva=new Tarea($_POST['descripcion'],$_POST['prioridad']);
-    $tareas[]=$tareaNueva;
+if (isset($_POST['descripcion']) && isset($_POST['prioridad'])) {
+    $descripcion = trim($_POST['descripcion']);
+    $prioridad   = $_POST['prioridad'];
+
+    if ($descripcion != "") {
+        $tareaNueva = new Tarea($descripcion, $prioridad);
+        $tareas[]   = $tareaNueva;
+    }
+}
+
+if (isset($_GET['eliminar'])) {
+    $id = (int) $_GET['eliminar'];
+
+    if (isset($tareas[$id])) {
+        unset($tareas[$id]);                 
+        $tareas = array_values($tareas);     
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -35,7 +49,7 @@ if (isset($_POST['descripcion'])&& isset($_POST['prioridad'])){
 
     <br>
 
-    <table border="1" cellpadding="5" cellspacing="0">
+    <table border="1">
         <tr>
             <th>ID</th>
             <th>Descripción</th>
@@ -48,7 +62,7 @@ if (isset($_POST['descripcion'])&& isset($_POST['prioridad'])){
                 <td><?php echo $id; ?></td>
                 <td><?php echo $tarea->descripcion; ?></td>
                 <td><?php echo $tarea->prioridad; ?></td>
-                <td><a href="#">Eliminar</a></td>
+                <td><a href="index.php?eliminar=<?php echo $id; ?>">Eliminar</a></td>
             </tr>
         <?php } ?>
     </table>
