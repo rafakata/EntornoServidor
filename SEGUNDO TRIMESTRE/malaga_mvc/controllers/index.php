@@ -68,100 +68,12 @@ $jugadores = Jugador::listarTodos();
 <head>
     <meta charset="UTF-8">
     <title>Málaga CF - Gestión de Plantilla</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to bottom, #0044ff 0%, #ffffff 40%);
-            margin: 0;
-            padding: 20px;
-            color: #0044ff;
-        }
-        h1, h2 {
-            text-align: center;
-        }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-        }
-        th, td {
-            border: 1px solid #0044ff;
-            padding: 8px;
-            text-align: center;
-        }
-        th {
-            background-color: #0044ff;
-            color: #ffffff;
-        }
-        img {
-            width: 50px;
-            height: 50px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 2px solid #0044ff;
-            background: #e0e8ff;
-        }
-        a {
-            color: #0044ff;
-            text-decoration: none;
-        }
-        a.button {
-            display: inline-block;
-            padding: 6px 10px;
-            border-radius: 4px;
-            border: 1px solid #0044ff;
-            margin: 2px;
-            font-size: 0.9em;
-        }
-        a.button:hover {
-            background-color: #0044ff;
-            color: #ffffff;
-        }
-        form {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 10px;
-        }
-        form input, form select, form button {
-            padding: 6px;
-            font-size: 0.9em;
-        }
-        form input[type="text"],
-        form input[type="number"],
-        form select {
-            flex: 1 1 45%;
-        }
-        form button {
-            background-color: #0044ff;
-            color: #ffffff;
-            border: none;
-            cursor: pointer;
-        }
-        form button:hover {
-            background-color: #002fba;
-        }
-        .mensaje {
-            text-align: center;
-            margin-bottom: 10px;
-            font-weight: bold;
-            color: green;
-        }
-        .acciones {
-            white-space: nowrap;
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/estilo.css">
 </head>
+
 <body>
 <div class="container">
+    <img src="assets/img/Málaga_CF.png" alt="Escudo Málaga CF" class="escudo-malaga">
     <h1>Málaga CF - Gestión de Plantilla</h1>
 
     <?php if ($mensaje): ?>
@@ -227,7 +139,7 @@ $jugadores = Jugador::listarTodos();
                         <?php
                         $foto = $j['foto'] ?: 'sin_foto.png';
                         ?>
-                        <img src="../public/<?php echo htmlspecialchars($foto); ?>" alt="Foto jugador">
+                        <img src="assets/img/<?php echo htmlspecialchars($foto); ?>" alt="Foto jugador">
                     </td>
                     <td><?php echo htmlspecialchars($j['nombre']); ?></td>
                     <td><?php echo htmlspecialchars($j['dorsal']); ?></td>
