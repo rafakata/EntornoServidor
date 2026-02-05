@@ -12,7 +12,7 @@ class Coche extends Db {
      */
     public function getTodos() {
         // Ordenamos por precio descendente (los caros primero)
-        $sql = "SELECT * FROM coches ORDER BY precio DESC";
+        $sql = "SELECT * FROM coches WHERE vendido = 0 ORDER BY precio DESC";
         $resultado = $this->consulta($sql);
         
         $coches = [];
@@ -36,5 +36,19 @@ class Coche extends Db {
         }
         return $coches;
     }
+
+    public function marcarComoVendido($id) {
+    $id = $this->escapar($id);
+    $sql = "UPDATE coches SET vendido = 1 WHERE id = $id";
+    return $this->consulta($sql);
+    }
+
+    public function getPorId($id) {
+    $id = $this->escapar($id);
+    $sql = "SELECT * FROM coches WHERE id = $id";
+    $resultado = $this->consulta($sql);
+    return $resultado->fetch_assoc();
+    }
+
 }
 ?>

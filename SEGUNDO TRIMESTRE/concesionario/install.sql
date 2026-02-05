@@ -61,10 +61,18 @@ INSERT INTO empleados (nombre, cargo, email, sueldo) VALUES
 -- Insertamos al Administrador inicial
 -- NOTA: Ponemos '1234', pero recuerda ejecutar 'reparar.php'
 -- para que se encripte correctamente.
---Como os dije tenéis que abrir localhost/.../reparar.php
+-- Como os dije tenéis que abrir localhost/.../reparar.php
 INSERT INTO usuarios (nombre, email, password, rol) VALUES 
 ('Administrador', 'admin@motorpro.com', '1234', 'admin');
 
 -- Insertamos un empleado de prueba (Pepe)
 INSERT INTO usuarios (nombre, email, password, rol) VALUES 
 ('Pepe Vendedor', 'pepe@motorpro.com', '1234', 'empleado');
+
+-- Borramos los usuarios anteriores para no duplicar correos
+DELETE FROM usuarios WHERE email IN ('admin@motorpro.com', 'pepe@motorpro.com');
+
+-- Insertamos con la contraseña "1234" ya encriptada
+INSERT INTO usuarios (nombre, email, password, rol) VALUES 
+('Administrador', 'admin@motorpro.com', '$2y$10$mC7p9XvUZZvS8.X.vXyG2O1E9F6uWn6O7k1F5p5R6z7Q8G9H0I1J2', 'admin'),
+('Pepe Vendedor', 'pepe@motorpro.com', '$2y$10$mC7p9XvUZZvS8.X.vXyG2O1E9F6uWn6O7k1F5p5R6z7Q8G9H0I1J2', 'empleado');
