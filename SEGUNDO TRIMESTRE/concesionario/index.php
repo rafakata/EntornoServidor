@@ -136,6 +136,22 @@ switch ($seccion) {
         include 'views/coches/listado.php';
         break;
 
+    case 'inventario_piezas':
+        require_once 'models/Pieza.php';
+        $piezaModel = new Pieza();
+        $listaPiezas = $piezaModel->getInventario();
+        $view = 'views/taller/inventario_piezas.php';
+        break;
+
+    case 'ficha_coche':
+        $id = $_GET['id'] ?? null;
+        if ($id) {
+            $cocheData = $cocheModel->getPorId($id); // Debes crear getPorId en el modelo Coche
+            $view = 'views/coches/ficha.php';
+        }
+        break;    
+
+
     // --- DASHBOARD PRINCIPAL ---
     case 'dashboard':
     default:

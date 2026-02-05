@@ -37,6 +37,11 @@ class Coche extends Db {
         return $coches;
     }
 
+    public function vender($id) {
+    $id = $this->escapar($id);
+    return $this->consulta("UPDATE coches SET vendido = 1 WHERE id = $id");
+    }
+
     public function marcarComoVendido($id) {
     $id = $this->escapar($id);
     $sql = "UPDATE coches SET vendido = 1 WHERE id = $id";

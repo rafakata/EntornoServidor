@@ -15,14 +15,19 @@
                 </p>
                 
                 <p class="stock">
-                    Stock: <strong><?php echo $coche['stock']; ?></strong> u.
+                    Stock: <strong style="<?php echo ($coche['stock'] < 3) ? 'color: red;' : ''; ?>">
+                        <?php echo $coche['stock']; ?>
+                    </strong> u.
+                    <?php if($coche['stock'] < 3): ?>
+                        <i class="fa-solid fa-triangle-exclamation" style="color: red;"></i> ⚠️
+                    <?php endif; ?>
                 </p>
 
                 <?php if($coche['destacado']): ?>
                     <span class="badge-vip"><i class="fa-solid fa-star"></i> VIP</span>
                 <?php endif; ?>
                 
-                <button class="btn-detalles">Ver Ficha</button>
+                <a href="index.php?page=ficha_coche&id=<?php echo $coche['id']; ?>" class="btn-detalles">Ver Ficha</a>
             </div>
         </div>
     <?php endforeach; ?>

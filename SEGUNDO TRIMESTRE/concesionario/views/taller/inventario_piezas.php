@@ -17,7 +17,7 @@
             <td style="<?php echo ($pieza['stock'] < 3) ? 'color: red; font-weight: bold;' : ''; ?>">
                 <?php echo $pieza['stock']; ?>
                 <?php if ($pieza['stock'] < 3): ?>
-                    <i class="fa-solid fa-triangle-exclamation"></i> ⚠️
+                    ⚠️
                 <?php endif; ?>
             </td>
         </tr>
